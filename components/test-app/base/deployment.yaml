@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: test-app
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: test-app
+    app.kubernetes.io/part-of: test-application
+  name: test-app
+  namespace: karthik-jk-tenant
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: test-app
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app.kubernetes.io/instance: test-app
+    spec:
+      containers:
+      - image: quay.io/karthik_jk/test-app
+        imagePullPolicy: Always
+        name: container-image
+        resources: {}
+status: {}
